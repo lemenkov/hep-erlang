@@ -21,7 +21,7 @@
 -export([decode/1]).
 
 -spec decode(binary()) -> {ok, hep:state()} | {error, term(), binary()}.
-decode(<<2:8, 28:8, 2:8, Protocol:8, SrcPort:16, DstPort:16,
+decode(<<2:8, 16:8, 2:8, Protocol:8, SrcPort:16, DstPort:16,
 		S0:8, S1:8, S2:8, S3:8, D0:8, D1:8, D2:8, D3:8,
 		Secs:32, USecs:32, NodeId:16, _:16, Payload/binary>>) ->
 	{ok, #hep{
