@@ -23,7 +23,7 @@
 -spec decode(binary()) -> {ok, hep:state()} | {error, term(), binary()}.
 decode(<<2:8, 16:8, 2:8, Protocol:8, SrcPort:16, DstPort:16,
 		S0:8, S1:8, S2:8, S3:8, D0:8, D1:8, D2:8, D3:8,
-		Secs:32, USecs:32, NodeId:16, _:16, Payload/binary>>) ->
+		Secs:32/little-integer, USecs:32/little-integer, NodeId:16/little-integer, _:16, Payload/binary>>) ->
 	{ok, #hep{
 		version = 2,
 		protocol_family = 2,
@@ -40,7 +40,7 @@ decode(<<2:8, 16:8, 2:8, Protocol:8, SrcPort:16, DstPort:16,
 decode(<<2:8, 52:8, 10:8, Protocol:8, SrcPort:16, DstPort:16,
 		S0:16, S1:16, S2:16, S3:16, S4:16, S5:16, S6:16, S7:16,
 		D0:16, D1:16, D2:16, D3:16, D4:16, D5:16, D6:16, D7:16,
-		Secs:32, USecs:32, NodeId:16, _:16, Payload/binary>>) ->
+		Secs:32/little-integer, USecs:32/little-integer, NodeId:16/little-integer, _:16, Payload/binary>>) ->
 	{ok, #hep{
 		version = 2,
 		protocol_family = 10,
